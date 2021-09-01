@@ -29,39 +29,45 @@ const sum = () => {
 }
 
 
- const  median = () => {
-     if(numbers.length ===0) return 0;
-   
-     numbers.sort(function(a,b){
-       return a-b;
-     });
-   
-     let half = Math.floor(numbers.length / 2);
-   
-     if (numbers.length % 2)
-       return numbers[half];
-   
-     return (numbers[half - 1] + numbers[half]) / 2.0;
-   }
+const  median = () => {
+    numbers.map(result => {
+        if (result !== "number") {
+            console.log(`Sorry, the argument ${numbers} is not a number, please try again`);
+            process.exit();
+        }
+    });
 
+    if(numbers.length ===0) return 0;
+  
+    numbers.sort(function(a,b){
+      return a-b;
+    });
+  
+    let half = Math.floor(numbers.length / 2);
+  
+    if (numbers.length % 2)
+      return numbers[half];
+  
+    return (numbers[half - 1] + numbers[half]) / 2.0;
+  }
 
+  
 switch (operation) {
     case "sum":
         console.log("SUM is = " + sum());
         break;
 
-
     case "avg":
         console.log("AVG IS = " + avg());
         break;
 
+    case "med":
+        console.log("Median is = " + median());
+        break;
+    
     case typeof "number":
         console.log("error!!!!");
         process.exit();
-        break;
-
-    case "med":
-        console.log("Median is = " + median());
         break;
 
     default:
