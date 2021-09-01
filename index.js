@@ -4,10 +4,7 @@ console.log("--------------");
 
 
 const args = process.argv.slice(2);
-
 const [operation, ...rest] = args;
-
-console.log(typeof operation);
 const numbers = rest.map(result => parseFloat(result));
 
 const avg = () => {
@@ -18,8 +15,9 @@ const avg = () => {
         }
     });
     return sum() / numbers.length;
-    
+
 }
+
 const sum = () => {
     numbers.map(result => {
         if (result !== "number") {
@@ -27,37 +25,47 @@ const sum = () => {
             process.exit();
         }
     });
-    return numbers.reduce((a, b) => a + b, 0); 
+    return numbers.reduce((a, b) => a + b, 0);
 }
 
-const numbersSort = numbers.sort();
-const mid = Math.ceil(numbers.length / 2);
 
-const median =
-numbers.length% 2 == 0 ? (numbersSort[mid] + numbersSort[mid - 1]) / 2 : numbersSort[mid - 1];
-
+ function median(){
+     if(numbers.length ===0) return 0;
+   
+     numbers.sort(function(a,b){
+       return a-b;
+     });
+   
+     let half = Math.floor(numbers.length / 2);
+   
+     if (numbers.length % 2)
+       return numbers[half];
+   
+     return (numbers[half - 1] + numbers[half]) / 2.0;
+   }
 
 
 switch (operation) {
     case "sum":
         console.log("SUM is = " + sum());
         break;
-     
 
-    case  "avg":
+
+    case "avg":
         console.log("AVG IS = " + avg());
         break;
 
     case typeof "number":
-        console.log("error!!!!");    
-         break;
-    
-    case "med":
-        console.log("Median is = " + median);
-         break;
+        console.log("error!!!!");
+        process.exit();
+        break;
 
-      default:
-            console.log(`I cannot calculate that, please type either "sum" (to calculate the sum) or "avg" (To calculate the Average)`);   
+    case "med":
+        console.log("Median is = " + median());
+        break;
+
+    default:
+        console.log(`I cannot calculate that, please type either "sum" (to calculate the sum) or "avg" (To calculate the Average) or "med" to calculate the median`);
 }
 
 console.log("After the forEach loop!!!!!");
