@@ -29,7 +29,7 @@ const sum = () => {
 }
 
 
- function median(){
+ const  median = () => {
      if(numbers.length ===0) return 0;
    
      numbers.sort(function(a,b){
