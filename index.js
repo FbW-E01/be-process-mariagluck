@@ -9,7 +9,7 @@ const numbers = rest.map(result => parseFloat(result));
 
 const avg = () => {
     numbers.map(result => {
-        if (result !== "number") {
+        if (result == "string") {
             console.log(`Sorry, the argument ${numbers} is not a number, please try again`);
             process.exit();
         }
@@ -20,7 +20,7 @@ const avg = () => {
 
 const sum = () => {
     numbers.map(result => {
-        if (result !== "number") {
+        if (result == "string") {
             console.log(`Sorry, the argument ${numbers} is not a number, please try again`);
             process.exit();
         }
@@ -31,7 +31,7 @@ const sum = () => {
 
 const  median = () => {
     numbers.map(result => {
-        if (result !== "number") {
+        if (result == "string") {
             console.log(`Sorry, the argument ${numbers} is not a number, please try again`);
             process.exit();
         }
